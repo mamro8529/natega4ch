@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتيجة الامتحان</title>
+    <style>
+        body {
+            background-color: #0d4f66; /* لون النيلي */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+        #studentCode {
+            width: 200px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #submitButton {
+            background-color: #1a759f; /* لون زر الإرسال */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #resultMessage {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>نتيجة الامتحان</h1>
+    <p>أدخل كود الطالب:</p>
+    <input type="text" id="studentCode" placeholder="أدخل الكود" onkeydown="checkEnter(event)">
+    <button id="submitButton" onclick="showResult()">عرض النتيجة</button>
+    <p id="resultMessage"></p>
+
+    <script>
+        function showResult() {
+            const studentCode = document.getElementById("studentCode").value;
+            let resultMessage = "";
+
+            if (studentCode === "500") {
+                resultMessage = "نتيجة اختبارك: 50/50";
+            } else if (studentCode === "600") {
+                resultMessage = "نتيجة اختبارك: 30/50";
+            } else if (studentCode === "900") {
+                resultMessage = "40/50";
+            } else {
+                resultMessage = "الكود غير صحيح!";
+            }
+
+            document.getElementById("resultMessage").textContent = resultMessage;
+        }
+
+        function checkEnter(event) {
+            if (event.key === "Enter") {
+                showResult();
+            }
+        }
+    </script>
+</body>
+</html>
+
